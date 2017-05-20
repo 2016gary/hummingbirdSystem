@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gary.hummingbirdSystem.dao.DataSourceMapper">
+	<!-- 数据源 -->
+	<resultMap id="DataSourceMap" type="com.gary.hummingbirdSystem.model.DataSource">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="connectType_id" property="connectTypeId"
+			jdbcType="INTEGER" />
+		<result column="connectMode_id" property="connectModeId"
+			jdbcType="INTEGER" />
+		<result column="connectDetail_id" property="connectDetailId"
+			jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<!-- 数据源 -->
+	<sql id="DataSource_Column_List">
+		a.id, a.name,
+		a.connectType_id,a.connectMode_id,a.connectDetail_id,a.create_time
+	</sql>
+
+	<select id="findDataSourceList" resultMap="DataSourceMap">
+		select
+		<include refid="DataSource_Column_List" />
+		from data_source as a
+	</select>
+
+	<select id="get" resultMap="DataSourceMap" parameterType="int">
+		select
+		<include refid="DataSource_Column_List" />
+		from data_source as a where a.id=#{id}
+	</select>
+
+	<!-- 连接类型 -->
+	<resultMap id="ConnectTypeMap" type="com.gary.hummingbirdSystem.model.ConnectType">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 连接类型 -->
+	<sql id="ConnectType_Column_List">
+		b.id,b.name
+	</sql>
+
+	<select id="getConnectTypeById" resultMap="ConnectTypeMap">
+		select
+		<include refid="ConnectType_Column_List" />
+		from connect_type as b
+	</select>
+
+	<!-- 连接模式 -->
+	<resultMap id="ConnectModeMap" type="com.gary.hummingbirdSystem.model.ConnectMode">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 连接模式 -->
+	<sql id="ConnectMode_Column_List">
+		c.id,c.name
+	</sql>
+
+	<select id="getConnectModeById" resultMap="ConnectModeMap">
+		select
+		<include refid="ConnectMode_Column_List" />
+		from connect_mode as c
+	</select>
+
+	<!-- 连接详细信息 -->
+	<resultMap id="ConnectDetailMap"
+		type="com.gary.hummingbirdSystem.model.ConnectDetail">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="hostname" property="hostname" jdbcType="VARCHAR" />
+		<result column="port" property="port" jdbcType="INTEGER" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+		<result column="password" property="password" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 连接详细信息 -->
+	<sql id="ConnectDetail_Column_List">
+		d.id,d.hostname,d.port,d.username,d.password
+	</sql>
+
+	<select id="getConnectDetailById" resultMap="ConnectDetailMap">
+		select
+		<include refid="ConnectDetail_Column_List" />
+		from connect_detail as d
+	</select>
+
+	<!-- 数据模型 -->
+	<resultMap id="DataModelMap" type="com.gary.hummingbirdSystem.model.DataModel">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="dataSource_id" property="dataSourceId"
+			jdbcType="INTEGER" />
+		<result column="dataSource_tables" property="dataSourceTables"
+			jdbcType="VARCHAR" />
+		<result column="description" property="description" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 数据模型 -->
+	<sql id="DataModel_Column_List">
+		e.id,e.name,e.dataSource_id,e.dataSource_tables,e.description
+	</sql>
+
+	<select id="findDataModelList" resultMap="DataModelMap">
+		select
+		<include refid="DataModel_Column_List" />
+		from data_model as e
+	</select>
+
+	<select id="getDataModelById" resultMap="DataModelMap">
+		select
+		<include refid="DataModel_Column_List" />
+		from data_model as e where e.id=#{id}
+	</select>
+
+	<!-- 多维数据分析 -->
+	<resultMap id="MultiDimensionAnalysisMap"
+		type="com.gary.hummingbirdSystem.model.MultiDimensionAnalysis">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="dataModel_id" property="dataModelId" jdbcType="INTEGER" />
+		<result column="dimensionColumn_names" property="dimensionColumnNames"
+			jdbcType="VARCHAR" />
+		<result column="quotaColumn_names" property="quotaColumnNames"
+			jdbcType="VARCHAR" />
+		<collection column="id" property="factTableRelationList"
+			ofType="com.gary.hummingbirdSystem.model.FactTableRelation" javaType="ArrayList"
+			select="findFactTableRelationList" />
+	</resultMap>
+
+	<!-- 事实表关联关系 -->
+	<resultMap id="FactTableRelationMap"
+		type="com.gary.hummingbirdSystem.model.FactTableRelation">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="multiDimensionAnalysis_id" property="multiDimensionAnalysisId"
+			jdbcType="INTEGER" />
+		<result column="factTable1_name" property="factTable1Name"
+			jdbcType="VARCHAR" />
+		<result column="factTable2_name" property="factTable2Name"
+			jdbcType="VARCHAR" />
+		<result column="connectType" property="connectType" jdbcType="VARCHAR" />
+		<result column="association_condition" property="associationCondition"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 多维数据分析 -->
+	<sql id="MultiDimensionAnalysis_Column_List">
+		f.id,f.dataModel_id,f.dimensionColumn_names,f.quotaColumn_names
+	</sql>
+
+	<!-- 事实表关联关系 -->
+	<sql id="FactTableRelation_Column_List">
+		g.id,g.multiDimensionAnalysis_id,g.factTable1_name,g.factTable2_name,g.connect_type,g.association_condition
+	</sql>
+
+	<select id="findMultiDimensionAnalysisList" resultMap="MultiDimensionAnalysisMap">
+		select
+		<include refid="MultiDimensionAnalysis_Column_List" />
+		from multi_dimension_analysis as f
+	</select>
+
+	<select id="findFactTableRelationList" resultType="com.gary.hummingbirdSystem.model.FactTableRelation"
+		parameterType="int">
+		select
+		<include refid="FactTableRelation_Column_List" />
+		from fact_table_relation as
+		g
+		where
+		g.multiDimensionAnalysis_id=#{id}
+	</select>
+
+</mapper>
