@@ -1,8 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!DOCTYPE html>
@@ -46,7 +45,7 @@
 						<li><a
 							href="${pageContext.request.contextPath}/dataSourceMgr/dataModelList">数据模型管理</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/dataSourceMgr/dimensionList">维度指标管理</a></li>
+							href="${pageContext.request.contextPath}/dataSourceMgr/dimensionList">维度分析管理</a></li>
 					</ul>
 				</div>
 			</div>

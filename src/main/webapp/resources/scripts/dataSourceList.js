@@ -29,7 +29,7 @@ $(document)
 											"targets" : 5,
 											"data" : null,
 											"render" : function(data, type, row) {
-												var html = ' <a title="修改" onclick="editDataSourceDetail(\''
+												var html = '<a title="修改" onclick="editDataSourceDetail(\''
 														+ row.id
 														+ '\',\''
 														+ row.name
@@ -40,12 +40,6 @@ $(document)
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-info">修改</a>'
 												html += ' <a title="删除" onclick="deleteDataSource(\''
 														+ row.id
-														+ '\',\''
-														+ row.name
-														+ '\',\''
-														+ row.connectType.name
-														+ '\',\''
-														+ row.connectMode.name
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-danger">删除</a>'
 												return html;
 											}
@@ -76,3 +70,13 @@ $(document)
 										},
 									});
 				});
+
+function editDataSourceDetail() {
+	$("#dataSource_modal_title").text("修改数据源");
+	$("#dataSource_modal").modal("show");
+}
+
+function showModal() {
+	$("#dataSource_modal_title").text("新增数据源");
+	$("#dataSource_modal").modal("show");
+}

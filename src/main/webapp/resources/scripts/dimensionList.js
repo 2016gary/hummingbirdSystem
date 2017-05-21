@@ -27,7 +27,7 @@ $(document)
 											"targets" : 4,
 											"data" : null,
 											"render" : function(data, type, row) {
-												var html = ' <a title="修改" onclick="editDataModelDetail(\''
+												var html = ' <a title="修改" onclick="editDimensionDetail(\''
 														+ row.id
 														+ '\',\''
 														+ row.dataModel.name
@@ -36,14 +36,8 @@ $(document)
 														+ '\',\''
 														+ row.quotaColumnNames
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-info">修改</a>'
-												html += ' <a title="删除" onclick="deleteDataModel(\''
+												html += ' <a title="删除" onclick="deleteDimension(\''
 														+ row.id
-														+ '\',\''
-														+ row.dataModel.name
-														+ '\',\''
-														+ row.dimensionColumnNames
-														+ '\',\''
-														+ row.quotaColumnNames
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-danger">删除</a>'
 												return html;
 											}
@@ -74,3 +68,13 @@ $(document)
 										},
 									});
 				});
+
+function editDimensionDetail() {
+	$("#dimension_modal_title").text("修改维度分析");
+	$("#dimension_modal").modal("show");
+}
+
+function showModal() {
+	$("#dimension_modal_title").text("新增维度分析");
+	$("#dimension_modal").modal("show");
+}

@@ -40,12 +40,6 @@ $(document)
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-info">修改</a>'
 												html += ' <a title="删除" onclick="deleteDataModel(\''
 														+ row.id
-														+ '\',\''
-														+ row.name
-														+ '\',\''
-														+ row.dataSource.name
-														+ '\',\''
-														+ row.description
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-danger">删除</a>'
 												return html;
 											}
@@ -76,3 +70,13 @@ $(document)
 										},
 									});
 				});
+
+function editDataModelDetail() {
+	$("#dataModel_modal_title").text("修改数据模型");
+	$("#dataModel_modal").modal("show");
+}
+
+function showModal() {
+	$("#dataModel_modal_title").text("新增数据模型");
+	$("#dataModel_modal").modal("show");
+}
