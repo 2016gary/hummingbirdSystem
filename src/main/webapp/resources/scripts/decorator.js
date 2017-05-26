@@ -7,6 +7,10 @@ $(document).ready(
 										|| document.location.href
 												.search(this.href) >= 0) {
 									$(this).parent().addClass('active');
+									$(this).parent().siblings().each(
+											function() {
+												$(this).removeClass('active');
+											});
 								}
 							});
 		});

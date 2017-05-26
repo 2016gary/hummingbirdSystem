@@ -1,7 +1,8 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
 <!DOCTYPE html>
@@ -40,13 +41,17 @@
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a
+						<li class="active"><a
 							href="${pageContext.request.contextPath}/dataSourceMgr/dataSourceList">数据源管理</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/dataSourceMgr/dataModelList">数据模型管理</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/dataSourceMgr/dimensionList">维度分析管理</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/ETLMgr/etlList">ETL管理</a></li>
 					</ul>
+					<a href="${pageContext.request.contextPath}/logout"
+						class="btn pull-right logout_btn">注销</a>
 				</div>
 			</div>
 		</nav>
