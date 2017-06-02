@@ -119,6 +119,7 @@
 	<resultMap id="MultiDimensionAnalysisMap"
 		type="com.gary.hummingbirdSystem.model.MultiDimensionAnalysis">
 		<id column="id" property="id" jdbcType="INTEGER" />
+		<id column="project_name" property="projectName" jdbcType="VARCHAR" />
 		<result column="dataModel_id" property="dataModelId" jdbcType="INTEGER" />
 		<result column="dimensionColumn_names" property="dimensionColumnNames"
 			jdbcType="VARCHAR" />
@@ -146,7 +147,7 @@
 
 	<!-- 多维数据分析 -->
 	<sql id="MultiDimensionAnalysis_Column_List">
-		f.id,f.dataModel_id,f.dimensionColumn_names,f.quotaColumn_names
+		f.id,f.project_name,f.dataModel_id,f.dimensionColumn_names,f.quotaColumn_names
 	</sql>
 
 	<!-- 事实表关联关系 -->

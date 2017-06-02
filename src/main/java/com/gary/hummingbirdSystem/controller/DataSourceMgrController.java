@@ -23,7 +23,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 /**
- * 数据源管理页面
+ * 数据源管理
  * 
  * @author Gary
  * 

@@ -1,0 +1,20 @@
+.modal-content {
+	width: 600px;
+}
+
+.modal-body {
+	width: 598px;
+}
+
+.span_modal {
+	width: 100px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 110px;
+}
+
+.div_modal {
+	width: 360px;
+	display: inline-block;
+	vertical-align: middle;
+}

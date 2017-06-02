@@ -38,6 +38,9 @@ $(document)
 														+ '\',\''
 														+ row.description
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-info">修改</a>'
+												html += ' <a title="ETL" onclick="showETLModal(\''
+														+ row.id
+														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-primary">ETL</a>'
 												html += ' <a title="删除" onclick="deleteDataModel(\''
 														+ row.id
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-danger">删除</a>'
@@ -79,4 +82,8 @@ function editDataModelDetail() {
 function showModal() {
 	$("#dataModel_modal_title").text("新增数据模型");
 	$("#dataModel_modal").modal("show");
+}
+
+function showETLModal() {
+	$("#ETL_modal").modal("show");
 }

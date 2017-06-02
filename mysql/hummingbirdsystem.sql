@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2017-05-18 18:51:57
+Date: 2017-06-02 10:41:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -126,6 +126,7 @@ INSERT INTO `fact_table_relation` VALUES ('2', 'RSALE', 'ORG', 'left', 'RSALE.OR
 DROP TABLE IF EXISTS `multi_dimension_analysis`;
 CREATE TABLE `multi_dimension_analysis` (
   `id` int(11) NOT NULL,
+  `project_name` varchar(45) NOT NULL COMMENT '工程名称',
   `dataModel_id` int(11) NOT NULL COMMENT '数据模型id',
   `dimensionColumn_names` varchar(100) NOT NULL COMMENT '维度字段',
   `quotaColumn_names` varchar(100) NOT NULL COMMENT '指标字段',
@@ -135,4 +136,4 @@ CREATE TABLE `multi_dimension_analysis` (
 -- ----------------------------
 -- Records of multi_dimension_analysis
 -- ----------------------------
-INSERT INTO `multi_dimension_analysis` VALUES ('1', '1', 'PRODCATY,ORG', 'RSALE');
+INSERT INTO `multi_dimension_analysis` VALUES ('1', 'project1', '1', 'PRODCATY,ORG', 'RSALE');

@@ -15,6 +15,8 @@ $(document)
 										"columns" : [ {
 											"data" : "id"
 										}, {
+											"data" : "projectName"
+										}, {
 											"data" : "dataModel.name"
 										}, {
 											"data" : "dimensionColumnNames"
@@ -24,7 +26,7 @@ $(document)
 											"data" : null
 										}, ],
 										"columnDefs" : [ {
-											"targets" : 4,
+											"targets" : 5,
 											"data" : null,
 											"render" : function(data, type, row) {
 												var html = ' <a title="修改" onclick="editDimensionDetail(\''
@@ -36,6 +38,9 @@ $(document)
 														+ '\',\''
 														+ row.quotaColumnNames
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-info">修改</a>'
+												html += ' <a title="OLAP" onclick="showOLAPModal(\''
+														+ row.id
+														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-primary">OLAP</a>'
 												html += ' <a title="删除" onclick="deleteDimension(\''
 														+ row.id
 														+ '\')" href="javascript:void(0);" class="btn btn-sm btn-danger">删除</a>'
@@ -67,6 +72,10 @@ $(document)
 											}
 										},
 									});
+
+					$("#showTableRelation_btn").click(function() {
+						$("#factTableRelation_modal").modal('show');
+					});
 				});
 
 function editDimensionDetail() {
@@ -77,4 +86,38 @@ function editDimensionDetail() {
 function showModal() {
 	$("#dimension_modal_title").text("新增维度分析");
 	$("#dimension_modal").modal("show");
+}
+
+function showOLAPModal() {
+	$("#OLAP_modal").modal("show");
+}
+
+function addFactTableRelation() {
+	var trString = "<tr>" + "<td>"
+			+ 1
+			+ "</td>"
+			+ "<td>"
+			+ $("#factTable1").val()
+			+ "</td>"
+			+ "<td>"
+			+ $("#factTable2").val()
+			+ "</td>"
+			+ "<td>"
+			+ $("#connectType").val()
+			+ "</td>"
+			+ "<td>"
+			+ $("#factTable1").val()
+			+ "."
+			+ $("#joinColumn_tbl1").val()
+			+ "="
+			+ $("#factTable2").val()
+			+ "."
+			+ $("#joinColumn_tbl2").val()
+			+ "</td>"
+			+ "<td>"
+			+ "<button type='button' class='btn btn-default btn-sm' onclick='editStr(this);'><span class='glyphicon glyphicon-edit'></span></button>"
+			+ "<button type='button' class='btn btn-default btn-sm' onclick='deleteStr(this);'><span class='glyphicon glyphicon-remove'></span></button>"
+			+ "</td>" + "</tr>";
+	$('#factTableRelation_tbl tbody').append(trString);
+	$("#factTableRelation_modal").modal("hide");
 }

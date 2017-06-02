@@ -17,9 +17,16 @@
 <link
 	href="${pageContext.request.contextPath}/resources/styles/navbar.css"
 	rel="stylesheet">
+<link
+	href="${pageContext.request.contextPath}/resources/styles/common.css"
+	rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/ystep/css/ystep.css" />
 <script
 	src="${pageContext.request.contextPath}/resources/jquery/js/jquery.min.js"
 	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/ystep/js/ystep.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
 <script
@@ -48,10 +55,12 @@
 						<li><a
 							href="${pageContext.request.contextPath}/dataSourceMgr/dimensionList">维度分析管理</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/ETLMgr/etlList">ETL管理</a></li>
+							href="${pageContext.request.contextPath}/statisticsMgr/staticalChart">统计图表</a></li>
 					</ul>
-					<a href="${pageContext.request.contextPath}/logout"
-						class="btn pull-right logout_btn">注销</a>
+					<div class="pull-right showUserMsg">
+						<span>你好，Gary</span> <a
+							href="${pageContext.request.contextPath}/logout" class="btn">注销</a>
+					</div>
 				</div>
 			</div>
 		</nav>

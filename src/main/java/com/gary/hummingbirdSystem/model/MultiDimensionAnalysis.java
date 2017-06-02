@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class MultiDimensionAnalysis {
 	private int id;
+	private String projectName;// 工程名称
 	private int dataModelId;// 数据模型id
 	private List<FactTableRelation> factTableRelationList;// 事实表关联关系id
 	private String dimensionColumnNames;// 维度字段名称
@@ -22,15 +23,18 @@ public class MultiDimensionAnalysis {
 		super();
 	}
 
-	public MultiDimensionAnalysis(int id, int dataModelId,
+	public MultiDimensionAnalysis(int id, String projectName, int dataModelId,
 			List<FactTableRelation> factTableRelationList,
-			String dimensionColumnNames, String quotaColumnNames) {
+			String dimensionColumnNames, String quotaColumnNames,
+			DataModel dataModel) {
 		super();
 		this.id = id;
+		this.projectName = projectName;
 		this.dataModelId = dataModelId;
 		this.factTableRelationList = factTableRelationList;
 		this.dimensionColumnNames = dimensionColumnNames;
 		this.quotaColumnNames = quotaColumnNames;
+		this.dataModel = dataModel;
 	}
 
 	public int getId() {
@@ -39,6 +43,14 @@ public class MultiDimensionAnalysis {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 	public int getDataModelId() {
